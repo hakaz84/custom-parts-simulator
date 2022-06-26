@@ -3,14 +3,14 @@ volumes:
   db-store:
   psysh-store:
 services:
-  app:
+  backend:
     build:
       context: .
       dockerfile: ./infra/docker/php/Dockerfile
       target: ${APP_BUILD_TARGET:-development}
     volumes:
       - type: bind
-        source: ./src
+        source: ./backend
         target: /data
       - type: volume
         source: psysh-store
@@ -31,6 +31,18 @@ services:
       - DB_USERNAME=${DB_USERNAME:-phper}
       - DB_PASSWORD=${DB_PASSWORD:-secret}
 
+  front:
+    build:
+      context: .
+      dockerfile: ./infra/docker/front/Dockerfile
+    ports:
+      - "8080:3000"
+    tty: true
+    volumes:
+      - type: bind
+        source: ./front
+        target: /data
+
   web:
     build:
       context: .
@@ -42,7 +54,7 @@ services:
         mode: host
     volumes:
       - type: bind
-        source: ./src
+        source: ./backend
         target: /data
 
   db:
