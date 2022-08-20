@@ -16,7 +16,7 @@
         @foreach ($items as $item)
             <select name="example">
                 <option value="サンプル">{{$item->parts_name}}</option>
-                <option value="サンプル1">サンプル1</option>
+                <option value="サンプル1">サンプル</option>
                 <option value="サンプル2">サンプル2</option>
             </select>
         @endforeach

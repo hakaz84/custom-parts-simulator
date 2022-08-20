@@ -13,3 +13,8 @@ class PartController extends Controller
         return view('part.index', ['items' => $items]);
     }
 }
+
+class PartController extends Controller
+{
+    
+}
