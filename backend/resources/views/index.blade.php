@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -9,14 +10,17 @@
 
 <body>
   <h1>バトオペ2カスタムパーツシュミレーター</h1>
+  
+  
     @for ($i = 0; $i < 8; $i++) 
-        
-    <select name="example">
-        <option value="サンプル1">サンプル1</option>
-        <option value="サンプル2">サンプル2</option>
-        <option value="サンプル3">サンプル3</option>
-    </select>
-    
+        @foreach ($items as $item)
+            <select name="example">
+                <option value="サンプル1">{{$item->parts_name}}</option>
+                <option value="サンプル2">サンプル2</option>
+                <option value="サンプル3">サンプル3</option>
+            </select>
+        @endforeach
+
     @endfor
 </body>
 
